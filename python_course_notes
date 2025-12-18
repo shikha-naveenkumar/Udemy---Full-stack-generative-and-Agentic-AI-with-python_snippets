@@ -1,0 +1,99 @@
+1) *kwargs usage:    
+def special_chai(*ingredients, **extras)://*kwargs
+      print("Ingredients", ingredients)
+      print("Extras", extras)
+   special_chai("Cinnamon", "Cardmom", sweetener="Honey", foam="yes")
+  
+  -> output:
+    Ingredients ('Cinnamon', 'Cardmom')
+    Extras {'sweetener': 'Honey', 'foam': 'yes'}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2) Correct use of nonlocal:
+  def happy():
+    x = 20     # enclosing variable
+
+    def happy2():
+        nonlocal x
+        x = 30
+
+    happy2()
+    print(x)//30
+
+happy()
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3) Correct use of global:
+x = 10
+
+def happy():
+    global x
+    x = 20
+
+    def happy2():
+        global x
+        x = 30
+
+    happy2()
+
+happy()
+print(x)//30
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+4) Dunder usage:
+
+    def chai_flavor(flavor="masala"):
+        """Return the flavor of chai."""
+        return flavor
+
+    print(chai_flavor._doc_)
+    print(chai_flavor._name__)
+
+    ->OUTPUT:
+    Return the flavor of chai.
+    chai_flavor
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  5) Comprehensions in python:
+    - used to shorten ur code writing
+    - faster execution and less code lines
+    - 3 types:
+              -list 
+              -set
+              -dictionary
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+6) Generators and their usage:
+    - yield : to have a whole bunch of data
+    - next() -  more like iteratiing through the generator
+    - send() -  sending data into the generator
+    - yield from - taking values from other yield statements (sub generators)
+    - close - to close the generator (good practice)
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7) Decorators:
+
+def my_decorator (func):
+  def wrapper():
+    print("Before function runs")
+    func()
+    print("After function runs")
+  return wrapper
+
+@my_decorator
+def greet():
+  print("Hello from decorators class from chaicode")
+greet()
+
+-> OUTPUT:
+  Before function runs
+  Hello from decorators class from chaicode
+  After function runs
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
