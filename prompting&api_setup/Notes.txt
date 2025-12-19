@@ -1,0 +1,34 @@
+Types of prompting:
+1. Zero-shot prompting- does not provide any examples
+2. Few-shot prompting- provides a few examples
+3. Chain of thought prompting- provides a chain of thought, multi-step reasoning 
+4. Persona based prompting- provides a persona , the LLM will mimic a person 
+
+
+Types of prompting styles:
+1. Alpaca format: A prompt style that structures instructions, optional input, and expected response explicitly, popularized by Stanford Alpaca for instruction-tuning LLMs.
+### Instruction:
+<task description>
+
+### Input:
+<optional context>
+
+### Response:
+<model output>
+
+
+2. ChatML format: A role-based prompt format that wraps messages with special tokens (e.g., system, user, assistant) to clearly separate conversation roles for chat-style LLMs.
+<|system|>
+<system instructions>
+<|user|>
+<user message>
+<|assistant|>
+<assistant response>
+
+
+3. INST format: A prompt style (used by models like LLaMA-Instruct) where the user instruction is enclosed in special instruction tags to guide the model’s response behavior.
+<s>[INST]
+<user instruction>
+[/INST]
+<assistant response>
+</s>
