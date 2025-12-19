@@ -77,6 +77,7 @@ print(x)//30
     - close - to close the generator (good practice)
 
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 7) Decorators:
 
 def my_decorator (func):
@@ -96,4 +97,58 @@ greet()
   Hello from decorators class from chaicode
   After function runs
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8) Asyncio python programming:
+      -async def: coroutines
+      -await: pause execution until result is obtained
+      -ayncio: build in python library
+      -event loop: engine that runs and schedules coroutines
+- it is used in FASTAPI to run requests faster
+-Also used as non blocking for any execution
+
+->import asyncio
+  async def brew_chai():
+        print("Brwing chai...")
+        await asyncio.sleep(2)
+        print("Chai is ready")
+  asyncio.run(brew_chai())
+
+-> asyncio with threads:
+import asyncio
+import time
+from concurrent.futures import ThreadPoolExecutor
+def check_stock(item):
+      print(f"Checking {item}.in-store...")
+      time.sleep(3) # Blocking operation
+      return f"{item} stock: -42"
+async def main():
+      loop = asyncio.get_running_loop()
+      with ThreadPoolExecutor as pool:
+            result = await loop.run_in_executor(pool,
+            check_stock, "Masala chai")
+            print(result)
+asyncio.run(main())
+
+->asyncio with process:
+import asyncio
+from concurrent.futures import ProcessPoolExecutor
+def encrypt(data):
+      return f" {data[::-1]}"
+async def main():
+      loop = asyncio.get_running_loop()
+      with ProcessPoolExecutor() as pool:
+            result = await loop.run_in_executor (pool, encrypt,
+            "credit_card_1234")
+      print(f"{result}")
+if __name_ "__main__":
+      asyncio.run(main())
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9) profiling, debugging race condition tools:
+-pyspy
+-vprof
+-Thread Scope
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
