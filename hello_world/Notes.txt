@@ -1,0 +1,5 @@
+Types of prompting:
+1. Zero-shot prompting- does not provide any examples
+2. Few-shot prompting- provides a few examples
+3. Chain of thought prompting- provides a chain of thought, multi-step reasoning 
+4. Persona based prompting- provides a persona , the LLM will mimic a person   
