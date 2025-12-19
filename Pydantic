@@ -1,0 +1,56 @@
+            ┌───────────┐
+            │  Pydantic │
+            └─────┬─────┘
+                  │
+        ┌─────────┴─────────┐
+        │                   │
+┌──────────────┐   ┌──────────────────┐
+│ Data          │   │ Setting          │
+│ Validation    │   │ Management       │
+└──────┬───────┘   └──────────────────┘
+       │
+┌──────────────────────────────┐
+│ - Data parsing & validation  │
+│ - API development            │
+│ - Config management          │
+│ - Serialization /            │
+│   Deserialization            │
+└──────────────────────────────┘
+
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) what to note in pydantic:
+-import BaseModel
+-Type Annotations (int,str,bool etc)
+-Model init (Always unpack the dicttonary)
+-Automatic Validation ( Pydantic will try to convert to correct data type before raising error. Eg: int="123" -> int = 123)
+
+from pydantic import BaseModel #import BaseModel
+class User (BaseModel):
+  id: int  #Type Annotations (int,str,bool etc)
+  name: str
+  is_active: bool
+input_data = {'id': 101, 'name': "Chaicode", 'is_active':
+True}
+user = User(**input_data)  #Model init (Always unpack the dicttonary)
+print(user)
+
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2A) Field validator in pydantic is used to check if that particular field has the correct data type
+    -need to use @field_validator decorator to check fields
+2B) Model validator in pydantic is used to check if the entire model has the correct format
+    -need to use @model_validator decorator to check 
+
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3)  Typing in pydantic is used to create a structure for the pydantic to check its elements
+Eg: LIST[str], DICT [str] etc
+
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
