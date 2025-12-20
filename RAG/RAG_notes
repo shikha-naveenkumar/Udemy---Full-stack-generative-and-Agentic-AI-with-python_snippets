@@ -1,0 +1,128 @@
+┌──────────────────────────┐
+│        RAG SYSTEM        │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│ 1️⃣ INDEXING PHASE        │
+│                          │
+│ • Provide the data       │
+│ • Load documents         │
+│ • Chunk the text         │
+│ • Create embeddings     │
+│ • Store in vector DB    │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│ 2️⃣ RETRIEVAL PHASE       │
+│                          │
+│ • User asks a question  │
+│ • Embed the query       │
+│ • Search vector DB      │
+│ • Retrieve relevant     │
+│   context               │
+│ • Send context + query  │
+│   to LLM                │
+│ • Chat with data        │
+└──────────────────────────┘
+-----------------------------------------------------------------------------------------------
+
+
+┌──────────────────────────────────────────────┐
+│               INDEXING PHASE                 │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Raw Documents                                │
+│  (PDFs, Docs, Pages, Text files)              │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Chunking                                    │
+│  • Split documents into small text chunks    │
+│  • Preserve context                          │
+│  • Assign metadata                           │
+│    { doc_id, page_num, section }             │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Embedding Model                             │
+│  • Converts each chunk into a vector         │
+│  • Produces high-dimensional embeddings      │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Vector Embeddings                           │
+│  A → [0.21, -0.34, 0.88, ...]                │
+│  B → [0.19, -0.30, 0.85, ...]                │
+│  C → [-0.72, 0.11, -0.40, ...]               │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Vector Database                             │
+│  • Stores embeddings                         │
+│  • Stores metadata                           │
+│    { page_num, doc }                         │
+│  • Enables similarity search                 │
+└──────────────────────────────────────────────┘
+-------------------------------------------------------------------------------------------
+
+┌──────────────────────────────────────────────┐
+│               RETRIEVAL PHASE                │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  User Query                                  │
+│  • User asks a question                     │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Query Embedding                             │
+│  • Convert query to vector                  │
+│  • Use same embedding model                 │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Vector Similarity Search                    │
+│  • Compare query vector with stored vectors │
+│  • Cosine / dot-product similarity          │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Retrieved Relevant Chunks                   │
+│  • Chunk A { page_num, doc }                │
+│  • Chunk C { page_num, doc }                │
+│  • Only the most relevant text              │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Prompt Construction                        │
+│  • System prompt (AI role)                  │
+│  • Retrieved context (text chunks)          │
+│  • User query                               │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  LLM (GPT-5)                                │
+│  • Uses provided context only               │
+│  • Generates grounded answer                │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│  Final Answer to User                       │
+│  • Based on retrieved data                  │
+│  • Can include citations (page, doc)        │
+└──────────────────────────────────────────────┘

@@ -114,7 +114,7 @@ Always respond with valid JSON. Think step by step.
 
 
 client = OpenAI(
-    api_key="AIzaSyC7d0HlUkQq7Y9niBQ17IYXsSnZMepqysQ",
+    api_key="GOOGLE_API_KEY",
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
