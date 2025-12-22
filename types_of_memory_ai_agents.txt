@@ -1,0 +1,30 @@
+TYPES OF MEMORY
+│
+├── Short-Term Memory (STM)
+│   │
+│   ├── Active during a session
+│   ├── Used while a task is being performed
+│   └── Temporary storage (seconds to minutes)
+│
+└── Long-Term Memory (LTM)
+    │
+    ├── Stores information for long durations
+    ├── Can last a lifetime
+    │
+    ├── Factual Memory
+    │   │
+    │   ├── Personal facts
+    │   │   ├── Your name
+    │   │   └── Your age
+    │   │
+    │   └── General facts (world knowledge)
+    │
+    ├── Episodic Memory
+    │   ├── Personal experiences
+    │   ├── Events with time & place
+    │   └── Example: First day at college
+    │
+    └── Semantic Memory
+        ├── Meanings, concepts, definitions
+        ├── Language & facts
+        └── Example: What "memory" means
